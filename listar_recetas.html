@@ -15,27 +15,18 @@
 
 <script src="js/vendor/jquery-1.11.2.min.js"></script>
 <script>
-$(".enviar").click(function(e) {
-	e.preventDefault();
-	var nombre = $("#nombre").val(),
-	datos = {"nombre":nombre};
 
 	$.ajax({
 		url: "php/recetas.php",
 		type: "POST",
-		data: datos
 	}).done(function(respuesta){
 		if (respuesta.estado === "ok") {
 			console.log(JSON.stringify(respuesta));
 
-			var id_receta = respuesta.id_receta,
-			nombre_receta = respuesta.nombre_receta,
-			id_user = respuesta.id_user;
-
 			$(".respuesta").html("Servidor:<br><pre>"+JSON.stringify(respuesta, null, 2)+"</pre>");
 		}
 	});
-});
+
 </script>
 </body>
 </html>

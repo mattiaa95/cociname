@@ -14,15 +14,16 @@ if ($resultado->num_rows === 0) {
     echo "Lo sentimos. No se pudo encontrar una coincidencia.";
     exit;
 }
+$datos= array();
 while ($receta = $resultado->fetch_assoc()) {
- $datos = array(
-    'estado' => 'ok',
+ $row = array(
     'id' => $receta['id_receta'],
     'precio' => $receta['precio'],
     'id_user' => $receta['id_user'],
     'receta_descripcion' => $receta['receta_descripcion'],
-    'nombre' => $receta['nombre'],
+    'nombre' => $receta['nombre']
     );
+array_push($datos, $row);
 }
 $resultado->free();
 $mysqli->close();
