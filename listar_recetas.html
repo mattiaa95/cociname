@@ -20,11 +20,12 @@
 		url: "php/recetas.php",
 		type: "POST",
 	}).done(function(respuesta){
-		if (respuesta.estado === "ok") {
 			console.log(JSON.stringify(respuesta));
+			var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
+			console.log(objetojs);
 
-			$(".respuesta").html("Servidor:<br><pre>"+JSON.stringify(respuesta, null, 2)+"</pre>");
-		}
+
+			$(".respuesta").text(objetojs[0].nombre +", "+ objetojs[1].nombre );
 	});
 
 </script>
