@@ -16,7 +16,7 @@
 <hr>
 <div class="respuesta"></div>
 
-<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+<script src="js/vendor/jquery-1.11.2.min.js"></script>
 <script>
 $(".enviar").click(function(e) {
 	e.preventDefault();
@@ -28,7 +28,7 @@ $(".enviar").click(function(e) {
 	datos = {"nombre":nombre, "apellido":apellido,"edad":edad};
 
 	$.ajax({
-		url: "/php/pruebas.php",
+		url: "php/pruebas.php",
 		type: "POST",
 		data: datos
 	}).done(function(respuesta){
