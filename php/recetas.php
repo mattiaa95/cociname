@@ -1,4 +1,9 @@
 <?php
+
+$nombre = $_POST["nombre"];
+$receta_descripcion  = $_POST["receta_descripcion"];
+$edad = $_POST["edad"];
+
 header('Content-Type: application/json');
 $mysqli = new mysqli('localhost', 'root', '', 'cociname');
 $mysqli->query("SET NAMES 'utf8'");
