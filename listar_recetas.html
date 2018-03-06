@@ -21,7 +21,13 @@
 		type: "POST",
 	}).done(function(respuesta){
 			console.log(JSON.stringify(respuesta));
-			$(".respuesta").html("Servidor:<br><pre>"+JSON.stringify(respuesta, null, 2)+"</pre>");
+			var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
+			console.log(objetojs);
+
+			
+			$(".respuesta").text(objetojs[0].nombre);
+
+
 	});
 
 </script>
