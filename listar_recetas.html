@@ -24,10 +24,8 @@
 			var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
 			console.log(objetojs);
 
-			
-			$(".respuesta").text(objetojs[0].nombre);
 
-
+			$(".respuesta").text(objetojs[0].nombre +", "+ objetojs[1].nombre );
 	});
 
 </script>
