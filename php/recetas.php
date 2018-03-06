@@ -1,26 +1,30 @@
 <?php
 header('Content-Type: application/json');
 $mysqli = new mysqli('localhost', 'root', '', 'cociname');
+$mysqli->query("SET NAMES 'utf8'");
 // Realizar una consulta SQL
 $sql = "SELECT * FROM recetas";
+
 if (!$resultado = $mysqli->query($sql)) {
     // ¡Oh, no! La consulta falló.
     echo "Error: La ejecución de la consulta falló.";
     exit;
 }
 if ($resultado->num_rows === 0) {
-    echo "Lo sentimos. No se pudo encontrar una coincidencia para el ID $aid. Inténtelo de nuevo.";
+    echo "Lo sentimos. No se pudo encontrar una coincidencia.";
     exit;
 }
-while ($recetas = $resultado->fetch_assoc()) {
-  $datos = array(
-  'estado' => 'ok',
-  'id' => $recetas['id_receta'],
-  'nombre' => $recetas['nombre_receta'],
-  'precio' => $recetas['precio']
-  );
+while ($receta = $resultado->fetch_assoc()) {
+ $datos = array(
+    'estado' => 'ok',
+    'id' => $receta['id_receta'],
+    'precio' => $receta['precio'],
+    'id_user' => $receta['id_user'],
+    'receta_descripcion' => $receta['receta_descripcion'],
+    'nombre' => $receta['nombre'],
+    );
 }
 $resultado->free();
 $mysqli->close();
-echo json_encode($datos, JSON_FORCE_OBJECT);
+echo json_encode($datos, JSON_UNESCAPED_UNICODE);
 ?>
