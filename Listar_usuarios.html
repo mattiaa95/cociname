@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Obtener JSON con AJAX</title>
+</head>
+
+<body>
+<h1>Datos para enviar a PHP</h1>
+
+<input type="text" id="nombre" placeholder="Nombre" accept="text/plain"><br><br>
+<div class="enviar"><h3>Enviar</h3></div>
+<hr>
+<div class="respuesta"></div>
+
+<script src="js/vendor/jquery-1.11.2.min.js"></script>
+<script>
+
+	$.ajax({
+		url: "php/usuarios.php",
+		type: "POST",
+	}).done(function(respuesta){
+			console.log(JSON.stringify(respuesta));
+			$(".respuesta").html("Servidor:<br><pre>"+JSON.stringify(respuesta, null, 2)+"</pre>");
+	});
+
+</script>
+</body>
+</html>

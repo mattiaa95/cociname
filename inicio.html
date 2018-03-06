@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="js/vendor/jquery-1.11.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -39,15 +40,46 @@
           <a class="navbar-brand" href="#">Project name</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
+          <script>
+          $(document).ready(function(){
+            if (document.cookie){
+
+            }
+          $("#submit").click(function(){
+              $.ajax({
+                  url: "php/login.php",
+                  cache: false,
+                  type: "POST",
+                  data: "username=" + $("#username").val() + "&password=" + $("#password").val(),
+                  success: function(data){
+                      if (data == '1') {
+                           alert('success');
+                           $("#login").hide();
+                      }else{
+                           alert('NO valido');
+                      }
+                  },
+                  error: function(){
+                                      $("#form").effect("shake", {times:2}, 100);
+                      $("#errorMessage")
+                          .css('margin', '30px 0 10px 9px')
+                          .attr('class', 'ui-state-error')
+                          .html('<strong>ERROR - </strong>Los datos ingresados son incorrectos');
+                      }
+                  });
+              });
+              });
+          </script>
+          <form class="navbar-form navbar-right" role="form" id="login">
             <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
+              <input type="text" placeholder="Usuario" class="form-control" id="username">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
+              <input type="password" placeholder="Password" class="form-control" id="password">
             </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
+            <button type="submit" class="btn btn-success" id="submit">Sign in</button>
           </form>
+
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
