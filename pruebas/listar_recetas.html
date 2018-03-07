@@ -31,10 +31,10 @@ $( document ).ready(function() {
 				precio = $("#precio").val(),
 				porcion = $("#porcion").val(),
 				id_tipo = $("#id_tipo").val(),
-				hacer = $("#hacer").val(),
+				accion = $("#accion").val(),
 				datos = {"nombre":nombre, "id_user":id_user,
 				"receta_descripcion":receta_descripcion,"precio":precio,
-				"porcion":porcion,"id_tipo":id_tipo,"hacer":hacer};
+				"porcion":porcion,"id_tipo":id_tipo,"accion":accion};
 
 	$.ajax({
 		url: "../php/recetas.php",
