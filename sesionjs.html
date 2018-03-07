@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Validacion de usuarios</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+</head>
+
+<body>
+
+<div data-role="page" id="inicio">
+
+	<div data-role="header">
+		<h1>Autenticacion de Usuario</h1>
+	</div>
+
+	<div data-role="content">
+		<form id="formulario" >
+
+      			<label> Usuario </label>
+      			<input type="text" id="nombredeusuario" name="nombredeusuario">
+
+      			<label> Password </label>
+     			<input type="password" id="clave" name="clave" >
+
+      			<input type="submit" value="Login" id="botonLogin">
+
+    		</form>
+	</div>
+
+</div>
+
+<div data-role="page" id="home">
+
+	<div data-role="header">
+		<h1>Bienvenido</h1>
+	</div>
+
+	<div data-role="content">
+		<h2> Bienvenido a la aplicacion </h2>
+		<h3> Su usuario y password son válidos</h3>
+	</div>
+
+</div>
+
+<script>
+$('#formulario').submit(function() {
+
+
+	// recolecta los valores que inserto el usuario
+	var datosUsuario = $("#nombredeusuario").val()
+	var datosPassword = $("#clave").val()
+
+  	archivoValidacion = "php/loginphp.php?jsoncallback=?"
+	$.getJSON( archivoValidacion, { usuario:datosUsuario ,password:datosPassword})
+	.done(function(respuestaServer) {
+
+		alert(respuestaServer.mensaje + "\nGenerado en: " + respuestaServer.hora + "\n" +respuestaServer.generador)
+
+		if(respuestaServer.validacion == "ok"){
+
+		 	/// si la validacion es correcta, muestra la pantalla "home"
+			$.mobile.changePage("#home")
+
+		}else{
+
+		  /// ejecutar una conducta cuando la validacion falla
+		}
+
+	})
+	return false;
+})
+
+</script>
+
+</body>
+</html>
