@@ -1,9 +1,24 @@
-function consulta() {
+$( document ).ready(function() {
+    console.log( "ready!" );
+
 	$.ajax({
 		url: "php/recetas.php",
 		type: "POST"
 				}).done(function(respuesta){
           var obj = jQuery.parseJSON(JSON.stringify(respuesta));
-          $(".respuesta").text(obj[0].nombre +", "+ obj[1].nombre);
+
+          obj.forEach(function(element) {
+            $("#cuerpo").append(
+                $('<div>', {
+                    'class': 'col-md-4'
+                }).append(
+                  $('<h2>').append($('<a>',{'href':'#','text':element.nombre})),
+                  $('<p>',{'text':element.receta_descripcion}),
+                  $('<p>').append($('<a>',{'class': 'btn btn-default', 'href':'#','role':'button' ,'text': 'Reserva'}))
+                )
+              )
+          });
+
+
 				});
-		};
+		});
