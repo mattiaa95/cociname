@@ -9,41 +9,46 @@
 <h1>Datos para enviar a PHP</h1>
 
 <input type="text" id="nombre" placeholder="Nombre" accept="text/plain"><br><br>
-<input type="text" id="id_user" placeholder="id_user" accept="text/plain"><br><br>
+<input type="number" id="id_user" placeholder="id_user" accept="text/plain"><br><br>
 <input type="text" id="receta_descripcion" placeholder="receta_descripcion" accept="text/plain"><br><br>
-<input type="text" id="precio" placeholder="precio" accept="text/plain"><br><br>
-<input type="text" id="nombre" placeholder="Nombre" accept="text/plain"><br><br>
-<div class="enviar"><h3>Enviar</h3></div>
+<input type="number" id="precio" placeholder="precio" accept="text/plain"><br><br>
+<input type="number" id="porcion" placeholder="porcion" accept="text/plain"><br><br>
+<input type="number" id="id_tipo" placeholder="id_tipo" accept="text/plain"><br><br>
+<input type="number" id="hacer" placeholder="hacer" accept="text/plain"><br><br>
+<div class="enviar" id="enviar"><h3>Enviar</h3></div>
 <hr>
 <div class="respuesta"></div>
 
-<script src="js/vendor/jquery-1.11.2.min.js"></script>
+<script src="../js/vendor/jquery-1.11.2.min.js"></script>
 <script>
+$( document ).ready(function() {
+		$( "#enviar" ).click(function() {
+		  alert( "click en enviar" );
 
-var nombre = $("#nombre").val(),
-id_user = $("#id_user").val(),
-receta_descripcion = $("#receta_descripcion").val(),
-precio = $("#precio").val(),
-porcion = $("#porcion").val(),
-id_tipo = $("#id_tipo").val(),
-
-datos = {"nombre":nombre, "id_user":id_user,
-"receta_descripcion":receta_descripcion,"precioprecio":precio,
-"porcion":porcion,"id_tipo":id_tipo};
+				var nombre = $("#nombre").val(),
+				id_user = $("#id_user").val(),
+				receta_descripcion = $("#receta_descripcion").val(),
+				precio = $("#precio").val(),
+				porcion = $("#porcion").val(),
+				id_tipo = $("#id_tipo").val(),
+				hacer = $("#hacer").val(),
+				datos = {"nombre":nombre, "id_user":id_user,
+				"receta_descripcion":receta_descripcion,"precio":precio,
+				"porcion":porcion,"id_tipo":id_tipo,"hacer":hacer};
 
 	$.ajax({
-		url: "php/recetas.php",
+		url: "../php/recetas.php",
 		type: "POST",
 		data: datos
-	}).done(function(respuesta){
+				}).done(function(respuesta){
+			console.log(respuesta);
 			console.log(JSON.stringify(respuesta));
 			var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
 			console.log(objetojs);
-
-
-			$(".respuesta").text(objetojs[0].nombre +", "+ objetojs[1].nombre );
-	});
-
+			$(".respuesta").text(objetojs[0].nombre +", "+ objetojs[1].nombre);
+				});
+		});
+});
 </script>
 </body>
 </html>
