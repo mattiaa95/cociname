@@ -7,6 +7,9 @@
   <body>
     <script src="../js/vendor/jquery-1.11.2.min.js"></script>
     <script src="../js/sesion.js"></script>
+    <script type="text/javascript">
+
+    </script>
     <div class="list" id="login">
                 <label>
                     <span>Email</span>
@@ -19,8 +22,11 @@
             <div style="height: 40px;"></div>
             <input type="submit" id="submit" name="" value="Enviar">
     </div>
-    <div>
-
+    <div id="auth">
+      <h1>estas logeado como:<strong id="user"></strong></h1>
+      <script>
+        $("#user").text(sessionStorage.getItem('usuario'));
+      </script>
     </div>
   </body>
 </html>
