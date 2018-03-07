@@ -36,18 +36,20 @@ if(isset($_POST["nombre"]) && isset($_POST["receta_descripcion"])&& isset($_POST
 
 $sql = "INSERT INTO recetas VALUES ( NULL,'$nombre', '$id_user', '$receta_descripcion', '$precio','$porcion' ,'$id_tipo' )";
 
-			if ($conn->query($sql) === TRUE) {
+			if ($conn->query($sql)) {
         $dato = array(
-           'sql' => $sql,
            'creado' => '1',
            'precio' => $precio,
-           'id_user' => $receta['id_user'],
-           'receta_descripcion' => $receta['receta_descripcion'],
-           'nombre' => $receta['nombre']
+           'id_user' => $id_user,
+           'receta_descripcion' => $receta_descripcion,
+           'nombre' => $nombre,
+           'porcion' => $porcion,
+           'id_tipo' => $id_tipo
            );
+             echo json_encode($dato, JSON_UNESCAPED_UNICODE);
 			}
 
-        echo json_encode($dato, JSON_UNESCAPED_UNICODE);
+
 		$conn->close();
 	}
 }
