@@ -1,22 +1,26 @@
 $( document ).ready(function() {
     console.log( "ready!" );
   $("#submit").click(function(){
+      var formData = new FormData();
+      formData.append('file', $('#file')[0].files[0]);
+      formData.append('usuario', $("#usuario").val());
+      formData.append('nombre', $("#nombre").val());
+      formData.append('apellido', $("#apellido").val());
+      formData.append('fecha', $("#fecha").val());
+      formData.append('descripcion', $("#descripcion").val());
+      formData.append('email', $("#email").val());
+      formData.append('password', $("#password").val());
       $.ajax({
           url: "../php/crearuser.php",
-          cache: false,
           type: "POST",
-          data: "password=" + $("#password").val() + "&usuario=" + $("#usuario").val()
-          + "&nombre=" + $("#nombre").val() + "&apellido=" + $("#apellido").val() + "&fecha="
-          + $("#fecha").val() + "&descripcion=" + $("#descripcion").val()
-        }).done(function(respuesta){
-            var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
-            if (objetojs.creado != 0) {
-              $("#texto").text("Creado correctamente");
-              $("#form").hide();
-            }else {
-              $("#texto").text("Error al crear el usuario");
-              $("#form").hide();
-            }
-          })
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function(respuesta)
+          {
+            console.log(respuesta);
+
+          }
+    });
   });
 });
