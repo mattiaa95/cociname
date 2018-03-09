@@ -7,17 +7,16 @@
 
 <body>
 <h1>Datos para enviar a PHP</h1>
-
+<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+	<input type="file" name="file" id="file" required /><br><br>
 <input type="text" id="nombre" placeholder="Nombre" accept="text/plain"><br><br>
 <input type="number" id="id_user" placeholder="id_user" accept="text/plain"><br><br>
 <input type="text" id="receta_descripcion" placeholder="receta_descripcion" accept="text/plain"><br><br>
 <input type="number" id="precio" placeholder="precio" accept="text/plain"><br><br>
 <input type="number" id="porcion" placeholder="porcion" accept="text/plain"><br><br>
 <input type="number" id="id_tipo" placeholder="id_tipo" accept="text/plain"><br><br>
-<input type="number" id="hacer" placeholder="hacer" accept="text/plain"><br><br>
-<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
-<input type="file" name="file" id="file" required />
 <div class="enviar" id="enviar"><h3>Enviar</h3></div>
+</form>
 <hr>
 <div class="respuesta"></div>
 
@@ -26,7 +25,8 @@
 $( document ).ready(function() {
 		$( "#enviar" ).click(function() {
 		  alert( "click en enviar" );
-					var formData = new FormData($("#uploadimage")[0]);
+					var formData = new FormData();
+					formData.append('file', $('#file')[0].files[0]);
 					formData.append('nombre', $("#nombre").val());
 					formData.append('id_user', $("#id_user").val());
 					formData.append('receta_descripcion', $("#receta_descripcion").val());
@@ -36,8 +36,9 @@ $( document ).ready(function() {
 					formData.append('accion', $("#accion").val());
 					formData.append('datos', $("#datos").val());
 
+console.log($('#file'));
 					$.ajax({
-							url: "../php/imagen.php",
+							url: "../php/recetas_crear.php",
 							type: "POST",
 							data: formData,
 							contentType: false,
