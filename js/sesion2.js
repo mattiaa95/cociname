@@ -1,7 +1,6 @@
 
 $( document ).ready(function() {
     console.log( "ready!" );
-
     if (sessionStorage.getItem('usuario')) {
       $("#navbar").append('<div class="navbar-form navbar-right" role="form" id="auth">' +
              '<button type="submit" class="btn btn-success">'+ sessionStorage.getItem('usuario') +'</button>' +
@@ -32,4 +31,4 @@ $( document ).ready(function() {
             }
           })
   });
-});
+  });
