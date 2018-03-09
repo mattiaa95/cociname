@@ -6,16 +6,11 @@ $conn->query("SET NAMES 'utf8'");
   if (!$resultado = $conn->query($sql)) {
       exit;
   }
-
   $datos= array();
-  while ($receta = $resultado->fetch_assoc()) {
+  while ($tipo = $resultado->fetch_assoc()) {
    $row = array(
-      'id' => $receta['id_receta'],
-      'precio' => $receta['precio'],
-      'id_user' => $receta['id_user'],
-      'receta_descripcion' => $receta['receta_descripcion'],
-      'nombre' => $receta['nombre'],
-      'src' => $receta['img']
+      'id' => $tipo['id_tipo'],
+      'nombre' => $tipo['tipo']
       );
   array_push($datos, $row);
   }
