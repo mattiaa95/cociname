@@ -8,15 +8,16 @@ $( document ).ready(function() {
       type: "POST",
       success: function(respuesta)
       {
-        console.log(respuesta);
         var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
-        console.log(objetojs);
-        
+        objetojs.forEach(function(element) {
+          $("#tipo").append('<option value="' + element.id + '">' + element.nombre + '</option>');
+        });
       }
   });
 
 
 		$( "#enviar" ).click(function() {
+          console.log($("#tipo").val());
       if (sessionStorage.getItem('usuario')) {
 					var formData = new FormData();
 					formData.append('file', $('#file')[0].files[0]);
@@ -25,7 +26,8 @@ $( document ).ready(function() {
 					formData.append('receta_descripcion', $("#descr").val());
 					formData.append('precio', $("#precio").val());
 					formData.append('porcion', $("#porcion").val());
-					formData.append('id_tipo', $("#id_tipo").val());
+					formData.append('id_tipo', $("#tipo").val());
+
 					$.ajax({
 							url: "php/recetas_crear.php",
 							type: "POST",
