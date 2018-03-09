@@ -26,6 +26,8 @@ if(isset($_POST["nombre"]) && isset($_POST["receta_descripcion"])&& isset($_POST
     $porcion = mysql_real_escape_string($porcion);
     $id_tipo = mysql_real_escape_string($id_tipo);
 
+		//imagepng
+
 $sql = "INSERT INTO recetas VALUES ( NULL,'$nombre', '$id_user', '$receta_descripcion', '$precio','$porcion' ,'$id_tipo' )";
 
 			if ($conn->query($sql)) {

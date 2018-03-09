@@ -15,6 +15,8 @@
 <input type="number" id="porcion" placeholder="porcion" accept="text/plain"><br><br>
 <input type="number" id="id_tipo" placeholder="id_tipo" accept="text/plain"><br><br>
 <input type="number" id="hacer" placeholder="hacer" accept="text/plain"><br><br>
+<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+<input type="file" name="file" id="file" required />
 <div class="enviar" id="enviar"><h3>Enviar</h3></div>
 <hr>
 <div class="respuesta"></div>
@@ -24,31 +26,34 @@
 $( document ).ready(function() {
 		$( "#enviar" ).click(function() {
 		  alert( "click en enviar" );
+					var formData = new FormData($("#uploadimage")[0]);
+					formData.append('nombre', $("#nombre").val());
+					formData.append('id_user', $("#id_user").val());
+					formData.append('receta_descripcion', $("#receta_descripcion").val());
+					formData.append('precio', $("#precio").val());
+					formData.append('porcion', $("#porcion").val());
+					formData.append('id_tipo', $("#id_tipo").val());
+					formData.append('accion', $("#accion").val());
+					formData.append('datos', $("#datos").val());
 
-				var nombre = $("#nombre").val(),
-				id_user = $("#id_user").val(),
-				receta_descripcion = $("#receta_descripcion").val(),
-				precio = $("#precio").val(),
-				porcion = $("#porcion").val(),
-				id_tipo = $("#id_tipo").val(),
-				accion = $("#accion").val(),
-				datos = {"nombre":nombre, "id_user":id_user,
-				"receta_descripcion":receta_descripcion,"precio":precio,
-				"porcion":porcion,"id_tipo":id_tipo,"accion":accion};
+					$.ajax({
+							url: "../php/imagen.php",
+							type: "POST",
+							data: formData,
+							contentType: false,
+							processData: false,
+							success: function(respuesta)
+							{
+								console.log(respuesta);
+								console.log(JSON.stringify(respuesta));
+								var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
+								console.log(objetojs);
+								//$(".respuesta").text(objetojs[0].nombre +", "+ objetojs[1].nombre);
+							}
+					});
+			});
+	 });
 
-	$.ajax({
-		url: "../php/recetas.php",
-		type: "POST",
-		data: datos
-				}).done(function(respuesta){
-			console.log(respuesta);
-			console.log(JSON.stringify(respuesta));
-			var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
-			console.log(objetojs);
-			$(".respuesta").text(objetojs[0].nombre +", "+ objetojs[1].nombre);
-				});
-		});
-});
 </script>
 </body>
 </html>
