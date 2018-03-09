@@ -1,6 +1,9 @@
 $( document ).ready(function() {
+  if (!sessionStorage.getItem('usuario')) {
+    document.location.href = "index.html";
+  }
 		$( "#enviar" ).click(function() {
-		  alert( "click en enviar" );
+      if (sessionStorage.getItem('usuario')) {
 					var formData = new FormData();
 					formData.append('file', $('#file')[0].files[0]);
 					formData.append('nombre', $("#nombre").val());
@@ -9,8 +12,6 @@ $( document ).ready(function() {
 					formData.append('precio', $("#precio").val());
 					formData.append('porcion', $("#porcion").val());
 					formData.append('id_tipo', $("#id_tipo").val());
-
-console.log($('#file'));
 					$.ajax({
 							url: "php/recetas_crear.php",
 							type: "POST",
@@ -25,5 +26,9 @@ console.log($('#file'));
 								console.log(objetojs);
 							}
 					});
+        }
+
 			});
-	 });
+
+
+   });
