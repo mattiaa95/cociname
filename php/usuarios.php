@@ -29,7 +29,8 @@
       'apellidos' => $usuario['apellido'],
       'password' => $usuario['password'],
       'descripcion' => $usuario['descripcion'],
-      'fecha' => $usuario['fecha_nacimiento']
+      'fecha' => $usuario['fecha_nacimiento'],
+      'email' => $usuario['email']
     );
     array_push($datos, $row);
   }
