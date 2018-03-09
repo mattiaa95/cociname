@@ -11,6 +11,7 @@ $( document ).ready(function() {
         console.log(respuesta);
         var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
         console.log(objetojs);
+        
       }
   });
 
