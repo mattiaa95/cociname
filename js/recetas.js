@@ -10,10 +10,11 @@ $( document ).ready(function() {
           obj.forEach(function(element) {
             $("#cuerpo").append(
                 $('<div>', {
-                    'class': 'col-md-4'
+                    'class': 'col-md-6'
                 }).append(
                   $('<h2>').append($('<a>',{'href':'#','text':element.nombre})),
                   $('<p>',{'text':element.receta_descripcion}),
+                  $('<img />', { src: 'img/'+element.src ,alt: element.nombre,height: '300px',width:'300px'}),
                   $('<p>').append($('<a>',{'class': 'btn btn-default', 'href':'#','role':'button' ,'text': 'Reserva'}))
                 )
               )

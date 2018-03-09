@@ -14,7 +14,8 @@ $conn->query("SET NAMES 'utf8'");
       'precio' => $receta['precio'],
       'id_user' => $receta['id_user'],
       'receta_descripcion' => $receta['receta_descripcion'],
-      'nombre' => $receta['nombre']
+      'nombre' => $receta['nombre'],
+      'src' => $receta['img']
       );
   array_push($datos, $row);
   }

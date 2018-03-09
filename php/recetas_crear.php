@@ -84,13 +84,14 @@ if (isset($_FILES["file"])){
 		    }
 		    else
 		    {
-		        $src = $carpeta.$nombre.$id_user.$id_tipo.mt_rand(1,999).image_type_to_extension($type);
+						$nombrefinal=$id_user.$id_tipo.$precio.mt_rand(1,99999).image_type_to_extension($type);
+		        $src = $carpeta.$nombrefinal;
 		        move_uploaded_file($ruta_provisional, $src);
 		    }
 
 		//imagepng
 
-$sql = "INSERT INTO recetas VALUES ( NULL,'$nombre', '$id_user', '$receta_descripcion', '$precio','$porcion' ,'$id_tipo' ,'$src' )";
+$sql = "INSERT INTO recetas VALUES ( NULL,'$nombre', '$id_user', '$receta_descripcion', '$precio','$porcion' ,'$id_tipo' ,'$nombrefinal' )";
 
 			if ($conn->query($sql)) {
         $dato = array(
