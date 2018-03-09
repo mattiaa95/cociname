@@ -10,6 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <style>
             body {
@@ -21,8 +22,10 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/vendor/jquery-1.11.2.min.js"></script>
-        0<script src="js/routes.js"></script>
+        <script src="js/routes.js"></script>
         <script src="js/sesion.js"></script>
+        <script src="js/perfil.js"></script>
+        <script src="js/cerrar.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -53,21 +56,55 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-  <!-- PRINCIPO CUERPO -->
+  <!-- PRINCIPO CUERPO ususario-->
 
+          <div class="container">
+          <div class="col-md-12" >
+            <div class="panel panel-info">
+              <div class="panel-heading">
+                <h3 class="panel-title" id="pr-nombre"></h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-6 col-lg-9 " align="center"> <img alt="Imagen" src="#" class="img-circle img-responsive"> </div>
+                  <div class=" col-md-12 col-lg-12 ">
+                    <table class="table table-user-information">
+                      <tbody>
+                        <tr>
+                          <td>Nombre y Apellidos:</td>
+                          <td id="pr-nomap"></td>
+                        </tr>
+                        <tr>
+                          <td>Fecha de Nacimiento:</td>
+                          <td id="pr-fecha"></td>
+                        </tr>
+                        <tr>
+                          <td>Descripcion</td>
+                          <td id="pr-descripcion"></td>
+                        </tr>
 
+                           <tr>
+                               <tr>
+                          <td>Email:</td>
+                          <td id="pr-email"></td>
+                              </tr>
+                        </tr>
 
-
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Descubre Nuestras Recetas De La Cominudad.</h1>
-      <p>Los usuarios publican recetas y las proporcionan para todos el publico.</p>
-      <p><a class="btn btn-primary btn-lg" href="listarrecetas.html" role="button"> Ver recetas</a></p>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+                   <div class="panel-footer">
+                              <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                              <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger pull-right" id="pr-borrar"><i class="glyphicon glyphicon-remove"></i></a>
+              <div class="clearfix"></div>
+                      </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-
-
 <!-- FIN CUERPO -->
 <footer>
   <p>&copy; Company 2015</p>

@@ -1,13 +1,5 @@
 
 $( document ).ready(function() {
-    console.log( "ready!" );
-    if (sessionStorage.getItem('usuario')) {
-      $("#auth").show();
-      $("#login").hide();
-    }else {
-      $("#auth").hide();
-      $("#login").show();
-    }
   $("#submit").click(function(){
       $.ajax({
           url: "php/usuarios.php",
@@ -25,8 +17,9 @@ $( document ).ready(function() {
               sessionStorage.setItem('apellidos', objetojs[0].apellidos);
               sessionStorage.setItem('descripcion', objetojs[0].descripcion);
               sessionStorage.setItem('fecha', objetojs[0].fecha);
+              sessionStorage.setItem('email', objetojs[0].email);
               document.location.href = "index.html";
             }
           })
+    });
   });
-});
