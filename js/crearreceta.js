@@ -2,6 +2,19 @@ $( document ).ready(function() {
   if (!sessionStorage.getItem('usuario')) {
     document.location.href = "index.html";
   }
+
+  $.ajax({
+      url: "php/tipos.php",
+      type: "POST",
+      success: function(respuesta)
+      {
+        console.log(respuesta);
+        var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
+        console.log(objetojs);
+      }
+  });
+
+
 		$( "#enviar" ).click(function() {
       if (sessionStorage.getItem('usuario')) {
 					var formData = new FormData();
