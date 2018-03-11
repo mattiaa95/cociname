@@ -1,5 +1,6 @@
 <?php
-header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
+  header('Content-Type: application/json');
 $conn = new mysqli('localhost', 'root', '', 'cociname');
 $conn->query("SET NAMES 'utf8'");
 if(isset($_POST["nombre"]) && isset($_POST["receta_descripcion"])&& isset($_POST["precio"])&& isset($_POST["id_user"])&& isset($_POST["porcion"]) ){

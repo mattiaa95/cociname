@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+  header('Content-Type: application/json');
       if(isset($_POST['username'])){
           $db = new mysqli("localhost", "root", "", "cociname");
           $stmt = $db->prepare("SELECT usuario FROM usuarios WHERE usuario = ? AND password = ?");

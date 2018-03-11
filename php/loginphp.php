@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+  header('Content-Type: application/json');
 /* Define los valores que seran evaluados, en este ejemplo son valores estaticos,
 en una verdadera aplicacion generalmente son dinamicos a partir de una base de datos */
 $usuarioValido = "revolucion";

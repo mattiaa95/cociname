@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+  header('Content-Type: application/json');
 if (isset($_FILES["file"]))
 {
     $file = $_FILES["file"];
