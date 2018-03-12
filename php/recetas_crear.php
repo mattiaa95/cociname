@@ -19,7 +19,7 @@ if (isset($_FILES["file"])){
 }else {
 	$dato = array(
 		 'creado' => '0',
-		 'Error' => '1'
+		 'Error' => 'error files'
 		 );
 			 echo json_encode($dato, JSON_UNESCAPED_UNICODE);
 			 exit;
@@ -51,7 +51,7 @@ if (isset($_FILES["file"])){
 		    {
 					$dato = array(
 						 'creado' => '0',
-						 'Error' => '2'
+						 'Error' => 'no es una imagen'
 						 );
 							 echo json_encode($dato, JSON_UNESCAPED_UNICODE);
 							 exit;
@@ -69,6 +69,7 @@ $sql = "INSERT INTO recetas VALUES ( NULL,'$nombre', '$id_user', '$receta_descri
 			if ($conn->query($sql)) {
         $dato = array(
            'creado' => '1',
+					 'Error' => 'todo bien',
            'precio' => $precio,
            'id_user' => $id_user,
            'receta_descripcion' => $receta_descripcion,
@@ -81,7 +82,7 @@ $sql = "INSERT INTO recetas VALUES ( NULL,'$nombre', '$id_user', '$receta_descri
 			}else {
         $dato = array(
            'creado' => '0',
-					 'Error' => '6'
+					 'Error' => 'error en consulta'
            );
              echo json_encode($dato, JSON_UNESCAPED_UNICODE);
       }
@@ -91,7 +92,7 @@ $sql = "INSERT INTO recetas VALUES ( NULL,'$nombre', '$id_user', '$receta_descri
 	}else {
     $dato = array(
        'creado' => '0',
-			 'Error' => '8'
+			 'Error' => 'error en empty'
 
        );
          echo json_encode($dato, JSON_UNESCAPED_UNICODE);
@@ -99,7 +100,7 @@ $sql = "INSERT INTO recetas VALUES ( NULL,'$nombre', '$id_user', '$receta_descri
 }else {
   $dato = array(
      'creado' => '0',
-		 'Error' => '8'
+		 'Error' => 'error en isset'
      );
        echo json_encode($dato, JSON_UNESCAPED_UNICODE);
 }

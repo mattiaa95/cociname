@@ -17,7 +17,8 @@ header('Access-Control-Allow-Origin: *');
       		    $carpeta = "../img/";
       }else {
       	$dato = array(
-      		 'Error' => '1'
+          'creado' => '0',
+      		 'Error' => 'no pilla el files'
       		 );
       			 echo json_encode($dato, JSON_UNESCAPED_UNICODE);
       			 exit;
@@ -48,7 +49,7 @@ header('Access-Control-Allow-Origin: *');
       {
         $dato = array(
            'creado' => '0',
-           'Error' => '2'
+           'Error' => 'No es una imagen'
            );
              echo json_encode($dato, JSON_UNESCAPED_UNICODE);
              exit;
@@ -62,23 +63,27 @@ header('Access-Control-Allow-Origin: *');
       $sql = "INSERT INTO usuarios VALUES ( NULL,'$usuario','$nombre','$apellido','$fecha','$descripcion','$password','$email','$nombrefinal');";
       if ($mysqli->query($sql)) {
         $datos = array(
-           'creado' => '1'
+           'creado' => '1',
+           'Error' => 'funciona bien'
            );
       }else {
         $datos = array(
-           'creado' => '0'
+           'creado' => '0',
+           'Error' => 'error de consulta'
            );
       }
     }
     else {
       $datos = array(
-        'creado' => '0'
+        'creado' => '0',
+        'Error' => 'if del empty'
       );
     }
   }
   else {
     $datos = array(
-       'creado' => '0'
+       'creado' => '0',
+       'Error' => 'if del isset'
        );
   }
   $mysqli->close();
