@@ -10,6 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <style>
             body {
@@ -23,6 +24,9 @@
         <script src="js/vendor/jquery-1.11.2.min.js"></script>
         <script src="js/routes.js"></script>
         <script src="js/sesion.js"></script>
+        <script src="js/perfil.js"></script>
+        <script src="js/cerrar.js"></script>
+        <script src="js/crearuser.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -48,25 +52,147 @@
               <input type="password" placeholder="Password" class="form-control" id="password">
             </div>
             <button type="submit" class="btn btn-success" id="submit">Iniciar sesion</button>
-            <a class="btn btn-default" href="crearusuario.html" >Registrarse</a>
+            <button type="submit" class="btn btn-default" href="Registrarse.html" >Registrarse</button>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-  <!-- PRINCIPO CUERPO -->
+  <!-- PRINCIPO CUERPO ususario-->
 
 
+<!-- sssssssssss  -->
 
+<div class="container">
+<div class="row">
+<div class="col-md-10 ">
+<form class="form-horizontal">
+<fieldset>
 
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Descubre Nuestras Recetas De La Cominudad.</h1>
-      <p>Los usuarios publican recetas y las proporcionan para todos el publico.</p>
-      <p><a class="btn btn-primary btn-lg" href="listarrecetas.html" role="button"> Ver recetas</a></p>
+<!-- Form Name -->
+<legend>Crear Usuario</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="nombre">Nombre de usuario</label>
+<div class="col-md-4">
+<div class="input-group">
+    <div class="input-group-addon">
+     <i class="fa fa-user">
+     </i>
     </div>
+    <input id="usuario" name="Nombre" type="text" placeholder="Usuario" class="form-control input-md">
+   </div>
+</div>
+</div>
+
+<!-- File Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="file">Subir Imagen</label>
+  <div class="col-md-4">
+    <input id="file" name="Subir Imagen" class="input-file" type="file">
   </div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="precio">Nombre</label>
+<div class="col-md-4">
+<div class="input-group">
+    <div class="input-group-addon">
+     <i class="fa fa-user">
+     </i>
+    </div>
+    <input id="nombre" name="numbre" type="text" placeholder="Nombre" class="form-control input-md">
+   </div>
+</div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="precio">Apellidos</label>
+<div class="col-md-4">
+<div class="input-group">
+    <div class="input-group-addon">
+     <i class="fa fa-user">
+     </i>
+    </div>
+    <input id="apellido" name="numbre" type="text" placeholder="Apellidos" class="form-control input-md">
+   </div>
+</div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="Porcion">Fecha</label>
+<div class="col-md-4">
+<div class="input-group">
+    <div class="input-group-addon">
+     <i class="fa fa-user">
+     </i>
+    </div>
+    <input id="fecha" name="number" type="date" placeholder="Fecha" class="form-control input-md">
+   </div>
+</div>
+</div>
+
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="Porcion">Fecha</label>
+<div class="col-md-4">
+<div class="input-group">
+    <div class="input-group-addon">
+     <i class="fa fa-user">
+     </i>
+    </div>
+    <input id="email" name="number" type="text" placeholder="Email" class="form-control input-md">
+   </div>
+</div>
+</div>
+<!-- Text input-->
+
+<div class="form-group">
+<label class="col-md-4 control-label" for="Porcion">Contraseña</label>
+<div class="col-md-4">
+<div class="input-group">
+    <div class="input-group-addon">
+     <i class="fa fa-user">
+     </i>
+    </div>
+    <input id="cr-password" name="number" type="password" placeholder="Password" class="form-control input-md">
+   </div>
+</div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+<label class="col-md-4 control-label" for="descr">Descripcion</label>
+<div class="col-md-4">
+ <textarea class="form-control" rows="10"  id="descripcion" name="(max 200 palabras)">Descripcion</textarea>
+</div>
+</div>
 
 
+<div class="form-group">
+<label class="col-md-4 control-label" ></label>
+<div class="col-md-4">
+<a id="enviar" class="btn btn-success"><span class="glyphicon glyphicon-thumbs-up"></span>Enviar</a>
+</div>
+</div>
+
+</fieldset>
+</form>
+</div>
+
+</div>
+</div>
+
+
+<!-- ccccccccccccccccccccccccccccccccccc  -->
 
 <!-- FIN CUERPO -->
 <footer>

@@ -1,4 +1,6 @@
 <?php
+header('Access-Control-Allow-Origin: *');
+  header('Content-Type: application/json');
 //Obtenemos los datos de los input
 $nombre = $_POST["nombre"];
 $apellido = $_POST["apellido"];
