@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 header('Content-Type: application/json');
 $conn = new mysqli('localhost', 'root', '', 'cociname');
 $conn->query("SET NAMES 'utf8'");
