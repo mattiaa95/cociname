@@ -52,36 +52,7 @@ header('Access-Control-Allow-Origin: *');
            );
              echo json_encode($dato, JSON_UNESCAPED_UNICODE);
              exit;
-      }
-      else if ($size > 1024*1024)
-      {
-        $dato = array(
-           'creado' => '0',
-           'Error' => '3'
-           );
-             echo json_encode($dato, JSON_UNESCAPED_UNICODE);
-             exit;
-      }
-      else if ($width > 700 || $height > 700)
-      {
-        $dato = array(
-           'creado' => '0',
-           'Error' => '4'
-           );
-             echo json_encode($dato, JSON_UNESCAPED_UNICODE);
-             exit;
-      }
-      else if($width < 20 || $height < 20)
-      {
-        $dato = array(
-           'creado' => '0',
-           'Error' => '5'
-           );
-             echo json_encode($dato, JSON_UNESCAPED_UNICODE);
-             exit;
-      }
-      else
-      {
+      }else{
           $nombrefinal=$fecha.mt_rand(1,99999).image_type_to_extension($type);
           $src = $carpeta.$nombrefinal;
           move_uploaded_file($ruta_provisional, $src);

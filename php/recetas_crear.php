@@ -55,35 +55,7 @@ if (isset($_FILES["file"])){
 						 );
 							 echo json_encode($dato, JSON_UNESCAPED_UNICODE);
 							 exit;
-		    }
-		    else if ($size > 1024*1024)
-		    {
-					$dato = array(
-						 'creado' => '0',
-						 'Error' => '3'
-						 );
-							 echo json_encode($dato, JSON_UNESCAPED_UNICODE);
-							 exit;
-		    }
-		    else if ($width > 700 || $height > 700)
-		    {
-					$dato = array(
-						 'creado' => '0',
-						 'Error' => '4'
-						 );
-							 echo json_encode($dato, JSON_UNESCAPED_UNICODE);
-							 exit;
-		    }
-		    else if($width < 220 || $height < 220)
-		    {
-					$dato = array(
-						 'creado' => '0',
-						 'Error' => '5'
-						 );
-							 echo json_encode($dato, JSON_UNESCAPED_UNICODE);
-							 exit;
-		    }
-		    else
+		    } else
 		    {
 						$nombrefinal=$id_user.$id_tipo.$precio.mt_rand(1,99999).image_type_to_extension($type);
 		        $src = $carpeta.$nombrefinal;
