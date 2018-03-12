@@ -5,8 +5,9 @@
   $mysqli->query("SET NAMES 'utf8'");
   if(isset($_POST["username"]) && isset($_POST["password"])){
   	if( !empty($_POST["username"])  && !empty($_POST["password"])){
-  @$usuario = $_POST['username'];
-  @$password = $_POST['password'];
+
+  $usuario = $_POST['username'];
+  $password = $_POST['password'];
 
   $usuario = stripslashes($usuario);
   $password = stripslashes($password);
@@ -18,20 +19,23 @@
   $sql = "SELECT * FROM usuarios WHERE usuario LIKE \"".$usuario."\" AND password LIKE \"".$password."\";";
   if (!$resultado = $mysqli->query($sql)) {
     $dato = array(
-       'estado' => '0'
+       'estado' => '0',
+       'Error' => 'falla conexion'
        );
       echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
       exit;
   }
   if ($resultado->num_rows === 0) {
     $dato = array(
-       'estado' => '0'
+       'estado' => '0',
+       'Error' => 'no existe el ususario y contraseña'
        );
       echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
       exit;
   }elseif ($resultado->num_rows > 1) {
     $dato = array(
-       'estado' => '0'
+       'estado' => '0',
+       'Error' => 'hay mas de un usuario'
        );
       echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
       exit;
@@ -40,6 +44,7 @@
   while ($usuario = $resultado->fetch_assoc()) {
     $datos = array(
       'estado' => '1',
+      'Error' => 'esta todo bien',
       'id' => $usuario['id_user'],
       'usuario' => $usuario['usuario'],
       'nombre' => $usuario['nombre'],
@@ -47,7 +52,8 @@
       'password' => $usuario['password'],
       'descripcion' => $usuario['descripcion'],
       'fecha' => $usuario['fecha_nacimiento'],
-      'email' => $usuario['email']
+      'email' => $usuario['email'],
+      'imagen' => $usuario['imagen']
     );
   }
   $resultado->free();
@@ -55,7 +61,7 @@
 }else {
   $dato = array(
      'estado' => '0',
-      'Error' => '3'
+      'Error' => 'El if de los empty'
      );
     echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
     exit;
@@ -63,7 +69,7 @@
 }else {
   $dato = array(
     'estado' => '0',
-     'Error' => '4'
+     'Error' => 'El if de los isset'
      );
     echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
     exit;
