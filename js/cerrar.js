@@ -1,13 +1,14 @@
 $( document ).ready(function() {
   $("#pr-borrar").click(function(){
-  sessionStorage.removeItem('id_usuario');
-  sessionStorage.removeItem('password');
-  sessionStorage.removeItem('usuario');
-  sessionStorage.removeItem('nombre');
-  sessionStorage.removeItem('apellidos');
-  sessionStorage.removeItem('descripcion');
-  sessionStorage.removeItem('fecha');
-  sessionStorage.removeItem('email');
-  document.location.href = "index.html";
+
+  window.sessionStorage.removeItem('id_usuario');
+  window.sessionStorage.removeItem('password');
+  window.sessionStorage.removeItem('usuario');
+  window.sessionStorage.removeItem('nombre');
+  window.sessionStorage.removeItem('apellidos');
+  window.sessionStorage.removeItem('descripcion');
+  window.sessionStorage.removeItem('fecha');
+  window.sessionStorage.removeItem('email');
+  window.document.location.href = "index.html";
   });
 });

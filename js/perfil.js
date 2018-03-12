@@ -1,7 +1,8 @@
 $( document ).ready(function() {
-  $("#pr-nombre").text(sessionStorage.getItem('nombre'));
-  $("#pr-nomap").text(sessionStorage.getItem('nombre')+" "+sessionStorage.getItem('apellidos'));
-  $("#pr-fecha").text(sessionStorage.getItem('fecha'));
-  $("#pr-descripcion").text(sessionStorage.getItem('descripcion'));
-  $("#pr-email").text(sessionStorage.getItem('email'));
+  $("#pr-imagen").attr("src","http://10.10.100.13/img/"+window.sessionStorage.getItem('imagen'));
+  $("#pr-nombre").text(window.sessionStorage.getItem('nombre'));
+  $("#pr-nomap").text(window.sessionStorage.getItem('nombre')+" "+sessionStorage.getItem('apellidos'));
+  $("#pr-fecha").text(window.sessionStorage.getItem('fecha'));
+  $("#pr-descripcion").text(window.sessionStorage.getItem('descripcion'));
+  $("#pr-email").text(window.sessionStorage.getItem('email'));
 });

@@ -1,10 +1,10 @@
 $( document ).ready(function() {
-  if (!sessionStorage.getItem('usuario')) {
-    document.location.href = "index.html";
+  if (!window.sessionStorage.getItem('usuario')) {
+    window.document.location.href = "index.html";
   }
 
   $.ajax({
-      url: "php/tipos.php",
+      url: "http://10.10.100.13/php/tipos.php",
       type: "POST",
       success: function(respuesta)
       {
@@ -16,9 +16,10 @@ $( document ).ready(function() {
   });
 
 
-		$( "#enviar" ).click(function() {
+		$( "#enviar" ).click(function(e) {
+        e.preventDefault();
           console.log($("#tipo").val());
-      if (sessionStorage.getItem('usuario')) {
+      if (window.sessionStorage.getItem('usuario')) {
 					var formData = new FormData();
 					formData.append('file', $('#file')[0].files[0]);
 					formData.append('nombre', $("#nombre").val());
@@ -29,18 +30,18 @@ $( document ).ready(function() {
 					formData.append('id_tipo', $("#tipo").val());
 
 					$.ajax({
-							url: "php/recetas_crear.php",
+							url: "http://10.10.100.13/php/recetas_crear.php",
 							type: "POST",
 							data: formData,
 							contentType: false,
 							processData: false,
 							success: function(respuesta)
 							{
-								console.log(respuesta);
-								console.log(JSON.stringify(respuesta));
 								var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
-								console.log(objetojs);
-							}
+                  alert(objetojs.Error);
+								  window.document.location.href = "index.html";
+							},
+                async: false
 					});
         }
 

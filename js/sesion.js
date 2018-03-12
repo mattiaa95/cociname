@@ -1,25 +1,31 @@
 
 $( document ).ready(function() {
-  $("#submit").click(function(){
+console.log("sesion ready");
+  $("#submit").click(function(e){
+    e.preventDefault();
+    var parametros = {
+      "username" : $("#username").val(),
+      "password" : $("#password").val()
+  };
       $.ajax({
-          url: "php/usuarios.php",
-          cache: false,
+          url: "http://10.10.100.13/php/usuarios.php",
           type: "POST",
-          data: "username=" + $("#username").val() + "&password=" + $("#password").val(),
-        }).done(function(respuesta){
-            var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
-            console.log(objetojs);
-            if (objetojs.estado != 0) {
-              sessionStorage.setItem('id_usuario', objetojs[0].id);
-              sessionStorage.setItem('password', objetojs[0].password);
-              sessionStorage.setItem('usuario', objetojs[0].usuario);
-              sessionStorage.setItem('nombre', objetojs[0].nombre);
-              sessionStorage.setItem('apellidos', objetojs[0].apellidos);
-              sessionStorage.setItem('descripcion', objetojs[0].descripcion);
-              sessionStorage.setItem('fecha', objetojs[0].fecha);
-              sessionStorage.setItem('email', objetojs[0].email);
-              document.location.href = "index.html";
-            }
-          })
+          data: parametros,
+          success: function(respuesta){
+          var objetojs = jQuery.parseJSON(JSON.stringify(respuesta));
+          if (objetojs.estado != 0) {
+            window.sessionStorage.setItem('id_usuario', objetojs.id);
+            window.sessionStorage.setItem('password', objetojs.password);
+            window.sessionStorage.setItem('usuario', objetojs.usuario);
+            window.sessionStorage.setItem('nombre', objetojs.nombre);
+            window.sessionStorage.setItem('apellidos', objetojs.apellidos);
+            window.sessionStorage.setItem('descripcion', objetojs.descripcion);
+            window.sessionStorage.setItem('fecha', objetojs.fecha);
+            window.sessionStorage.setItem('email', objetojs.email);
+            window.sessionStorage.setItem('imagen', objetojs.imagen);
+            window.document.location.href = "index.html";
+          }
+          }
+        })
     });
   });
