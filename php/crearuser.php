@@ -49,7 +49,7 @@ header('Access-Control-Allow-Origin: *');
       {
         $dato = array(
            'creado' => '0',
-           'Error' => 'No es una imagen'
+           'Error' => 'No es una imagen ' . $tipo
            );
              echo json_encode($dato, JSON_UNESCAPED_UNICODE);
              exit;

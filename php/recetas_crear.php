@@ -51,12 +51,11 @@ if (isset($_FILES["file"])){
 		    {
 					$dato = array(
 						 'creado' => '0',
-						 'Error' => 'no es una imagen'
+						 'Error' => 'no es una imagen ' . $tipo
 						 );
 							 echo json_encode($dato, JSON_UNESCAPED_UNICODE);
 							 exit;
-		    } else
-		    {
+		    } else {
 						$nombrefinal=$id_user.$id_tipo.$precio.mt_rand(1,99999).image_type_to_extension($type);
 		        $src = $carpeta.$nombrefinal;
 		        move_uploaded_file($ruta_provisional, $src);
