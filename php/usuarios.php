@@ -3,6 +3,8 @@ header('Access-Control-Allow-Origin: *');
   header('Content-Type: application/json');
   $mysqli = new mysqli('127.0.0.1', 'root', '', 'cociname');
   $mysqli->query("SET NAMES 'utf8'");
+  if(isset($_POST["username"]) && isset($_POST["password"])){
+  	if( !empty($_POST["username"])  && !empty($_POST["password"])){
   @$usuario = $_POST['username'];
   @$password = $_POST['password'];
 
@@ -50,5 +52,21 @@ header('Access-Control-Allow-Origin: *');
   }
   $resultado->free();
   $mysqli->close();
+}else {
+  $dato = array(
+     'estado' => '0',
+      'Error' => '3'
+     );
+    echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
+    exit;
+}
+}else {
+  $dato = array(
+    'estado' => '0',
+     'Error' => '4'
+     );
+    echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
+    exit;
+}
   echo json_encode($datos, JSON_UNESCAPED_UNICODE);
 ?>
