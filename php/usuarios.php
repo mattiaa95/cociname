@@ -5,6 +5,13 @@ header('Access-Control-Allow-Origin: *');
   $mysqli->query("SET NAMES 'utf8'");
   @$usuario = $_POST['username'];
   @$password = $_POST['password'];
+
+  $usuario = stripslashes($usuario);
+  $password = stripslashes($password);
+
+  $usuario = mysql_real_escape_string($usuario);
+  $password = mysql_real_escape_string($password);
+
   // Realizar una consulta SQL
   $sql = "SELECT * FROM usuarios WHERE usuario LIKE \"".$usuario."\" AND password LIKE \"".$password."\";";
   if (!$resultado = $mysqli->query($sql)) {
@@ -20,10 +27,17 @@ header('Access-Control-Allow-Origin: *');
        );
       echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
       exit;
+  }elseif ($resultado->num_rows > 1) {
+    $dato = array(
+       'estado' => '0'
+       );
+      echo json_encode($dato, JSON_UNESCAPED_UNICODE);;
+      exit;
   }
   $datos = array();
   while ($usuario = $resultado->fetch_assoc()) {
-    $row = array(
+    $datos = array(
+      'estado' => '1',
       'id' => $usuario['id_user'],
       'usuario' => $usuario['usuario'],
       'nombre' => $usuario['nombre'],
@@ -33,7 +47,6 @@ header('Access-Control-Allow-Origin: *');
       'fecha' => $usuario['fecha_nacimiento'],
       'email' => $usuario['email']
     );
-    array_push($datos, $row);
   }
   $resultado->free();
   $mysqli->close();
