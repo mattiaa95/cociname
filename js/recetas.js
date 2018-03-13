@@ -12,6 +12,7 @@ $( document ).ready(function() {
                     'class': 'col-md-6'
                 }).append(
                   $('<h2>').append($('<a>',{'href':'#','text':element.nombre})),
+                  $('<h3>',{'text':'Precio: '+element.precio+'€'}),
                   $('<p>',{'text':element.receta_descripcion}),
                   $('<img />', { src: 'http://10.10.100.13/img/'+element.src ,alt: element.nombre,height: '300px',width:'300px'}),
                   $('<p>').append($('<a>',{'class': 'btn btn-default', 'href':'#','role':'button' ,'text': 'Reserva'}))

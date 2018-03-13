@@ -13,6 +13,7 @@ $conn->query("SET NAMES 'utf8'");
    $row = array(
       'id' => $receta['id_receta'],
       'precio' => $receta['precio'],
+      'porcion' => $receta['porcion'],
       'id_user' => $receta['id_user'],
       'receta_descripcion' => $receta['receta_descripcion'],
       'nombre' => $receta['nombre'],
